@@ -181,9 +181,7 @@ shuffleArray(new_list);
 //======================================
 
 
-//======================================Começando as simulações dos jogos
-
-//======================================Função que cria um Rank dos times
+//======================================Função que cria um Rank dos times (começo)
 function ranking(inputArray){ 
 
     //-----------------------------------------FUNÇÕES DA FUNÇÃO (começo)
@@ -200,14 +198,9 @@ function ranking(inputArray){
         else if(inputArray[0].goals < inputArray[1].goals){
             inputArray[1].points += 0.1;; 
         }
-        else{
-            console.log("Iguais, sortear time!!!");
-
+        else{      
             lucky = [inputArray[0], inputArray[1]];
             shuffleArray(lucky) ;
-
-            console.log(inputArray);
-            console.log(lucky);
 
             lucky[0].points += 0.1;  
         }
@@ -309,17 +302,15 @@ function ranking(inputArray){
     rank_points(inputArray);
     
     //Retirando os pontos auxiliares adicionados
-    normalize_points(inputArray);
+    normalize_points(inputArray);  
     
-    //Faz o array final com o rank feito e sem repetições
-    //normalize_points(new_Array_points);
-
-    console.log("ARRAY INPUT ---> ", inputArray); 
-    console.log("ARRAY FINAL ---> ", new_Array_points);
-    console.log("VECTOR POINTS --->  ", rank_array_points);
+    winners = [new_Array_points[0], new_Array_points[1]];
+    return winners;
 }
+//======================================Função que cria um Rank dos times (final)
 
 
+//======================================Funções que criam as partidas (começo)
 //-----Função Embaralhar grupo 
 function ramdom_group(inputArray, num){
     if(num == 2){
@@ -358,7 +349,7 @@ function play_match(inputArray){
 }
 
 
-//-----Função que faz 4 partidas de uma vez, funcionando até a semi-final
+//-----Função que faz 4 partidas de uma vez
 function match_group(inputArray){
     //jogo 1
     confronto_1 = [inputArray[0], inputArray[1]];
@@ -370,8 +361,10 @@ function match_group(inputArray){
     play_match(confronto_1);
     play_match(confronto_2);
 }
+//======================================Funções que criam as partidas (final)
 
-
+//======================================Começando as simulações dos jogos
+//====================================Fase de grupos (começo)
 //Partidas 1
 match_group(group_A);
 match_group(group_B);
@@ -403,8 +396,42 @@ match_group(ramdom_group(group_G, 3));
 match_group(ramdom_group(group_H, 3));
 
 //Rankeando
-ranking(group_A);
+ranking(group_A)
+    winners_A = winners;
+    console.log("A --> ", winners_A);
+ranking(group_B)
+    winners_B = winners;
+    console.log("B --> ", winners_B);
+ranking(group_C)
+    winners_C = winners;
+    console.log("C --> ", winners_C);
+ranking(group_D)
+    winners_D = winners;
+    console.log("D --> ", winners_D);
+ranking(group_E)
+    winners_E = winners;
+    console.log("E --> ", winners_E);
+ranking(group_F)
+    winners_F = winners;
+    console.log("F --> ", winners_F);
+ranking(group_G)
+    winners_G = winners;
+    console.log("G --> ", winners_G);
+ranking(group_H)
+    winners_H = winners;
+    console.log("H --> ", winners_H);
 
-//=============Fim das Oitavas
+//====================================Fase de grupos (final)
+
+//====================================Oitavas (começo)
+
+teams_oitavas = [winners_A[0], winners_A[1], winners_B[0], winners_B[1],
+                 winners_C[0], winners_C[1], winners_D[0], winners_D[1],
+                 winners_E[0], winners_E[1], winners_F[0], winners_F[1],
+                 winners_G[0], winners_G[1], winners_H[0], winners_H[1]]
+
+console.log("Times das oitavas --> ", teams_oitavas);
+
+
 
 
