@@ -1,11 +1,10 @@
-//Consumindo dados da API com GET
+//======================================Consumindo dados da API com GET
 function make_get(url){
     let request = new XMLHttpRequest()
     request.open("GET", url, false)
     request.setRequestHeader("git-user", "KevinFlauzino");
     request.send()
-    return request.responseText
-    
+    return request.responseText    
 }
 
 data = make_get("https://estagio.geopostenergy.com/WorldCup/GetAllTeams")
@@ -13,14 +12,6 @@ list = JSON.parse(data)
 
 //Lista dos times
 list_teams = list.Result
-
-
-
-
-
-aaa = list_teams[1].Name
-
-console.log(aaa)
 
 //criando a Classe team
 class Team{ 
@@ -30,8 +21,10 @@ class Team{
     goals = 0;   
     img;
 }
+//======================================
 
-//Times como objetos
+
+//======================================Times como objetos
 const team_0 = new Team();
     team_0.name = list_teams[0].Name;
     team_0.token = list_teams[0].Token;
@@ -117,8 +110,8 @@ const team_20 = new Team();
     team_20.token = list_teams[20].Token;
 
 const team_21 = new Team();
-team_21.name = list_teams[21].Name;
-team_21.token = list_teams[21].Token;
+    team_21.name = list_teams[21].Name;
+    team_21.token = list_teams[21].Token;
 
 const team_22 = new Team();
     team_22.name = list_teams[22].Name;
@@ -185,18 +178,15 @@ shuffleArray(new_list);
     group_F = [new_list[21], new_list[22], new_list[23], new_list[24]];
     group_G = [new_list[25], new_list[26], new_list[27], new_list[28]];
     group_H = [new_list[29], new_list[30], new_list[31], new_list[0]];
+//======================================
 
 
 //======================================Começando as simulações dos jogos
 
-//-----Função que cria um Rank dos times
-function ranking(inputArray){
-    
-    //array dos pontos
-    points_array = [inputArray[0].points, inputArray[1].points,
-                    inputArray[2].points, inputArray[3].points]
+//======================================Função que cria um Rank dos times
+function ranking(inputArray){ 
 
-
+    //-----------------------------------------FUNÇÕES DA FUNÇÃO (começo)
     //Função necessária para ter uma ordem crescente correta
     function compare_numbers(a, b) {
         return a - b;
@@ -205,69 +195,128 @@ function ranking(inputArray){
     //função que compara os gols
     function compare_goals(inputArray){
         if(inputArray[0].goals > inputArray[1].goals){
-            winner = inputArray[0];
+            inputArray[0].points += 0.1;        
         }
         else if(inputArray[0].goals < inputArray[1].goals){
-            winner = inputArray[1]; 
+            inputArray[1].points += 0.1;; 
         }
         else{
-            return 0;
-        }
+            console.log("Iguais, sortear time!!!");
 
-        console.log("WINNER --> ", winner);
+            lucky = [inputArray[0], inputArray[1]];
+            shuffleArray(lucky) ;
+
+            console.log(inputArray);
+            console.log(lucky);
+
+            lucky[0].points += 0.1;  
+        }
+    }    
+
+    //Função que rankeia por pontos
+    function rank_points(inputArray){
+        for(i=0; i<4; i+=1){
+            if( inputArray[i].points == rank_array_points[3]){
+                points_number_1 = inputArray[i];
+            }
+            if( inputArray[i].points == rank_array_points[2]){
+                points_number_2 = inputArray[i];
+            }
+            if( inputArray[i].points == rank_array_points[1]){
+                points_number_3 = inputArray[i];
+            }
+            if( inputArray[i].points == rank_array_points[0]){
+                points_number_4 = inputArray[i];  
+            }        
+        } 
+
+        new_Array_points = [points_number_1, points_number_2,
+                            points_number_3, points_number_4];
+
+        return new_Array_points;
     }
 
-
-    //Coloca em ordem crescente
-    rank_array_points = points_array.sort(compare_numbers);
-
-    //Primeira parte - ordenar por pontos   
+    //Função que Verifica se é preciso comparar os gols dos times como forma de desempate
+    function diff_goals(inputArray){
     for(i=0; i<4; i+=1){
-        if( inputArray[i].points == rank_array_points[3]){
-            points_number_1 = inputArray[i];
-        }
-        if( inputArray[i].points == rank_array_points[2]){
-            points_number_2 = inputArray[i];
-        }
-        if( inputArray[i].points == rank_array_points[1]){
-            points_number_3 = inputArray[i];
-        }
-        if( inputArray[i].points == rank_array_points[0]){
-            points_number_4 = inputArray[i];  
-        }        
-    } 
+            if (inputArray[0].points == inputArray[1].points){
+                compare_goals([inputArray[0], inputArray[1]]);            
+            } 
+            if (inputArray[0].points == inputArray[2].points){
+                compare_goals([inputArray[0], inputArray[2]]);
+            } 
+            if (inputArray[0].points == inputArray[3].points){
+                compare_goals([inputArray[0], inputArray[3]]);
+            } 
+            if (inputArray[1].points == inputArray[2].points){
+                compare_goals([inputArray[1], inputArray[2]]);
+            } 
+            if (inputArray[1].points == inputArray[3].points){
+                compare_goals([inputArray[1], inputArray[3]]);
+            } 
+            if (inputArray[2].points == inputArray[3].points){
+                compare_goals([inputArray[2], inputArray[3]]);
+            } 
+        } 
+    }    
 
-    new_Array_points = [points_number_1, points_number_2,
-                        points_number_3, points_number_4]
-
-    for(i=0; i<4; i+=1){
-        if (points_number_1 == points_number_2){
-            compare_goals([points_number_1, points_number_2]);
-        } 
-        if (points_number_1 == points_number_3){
-            compare_goals([points_number_1, points_number_3]);
-        } 
-        if (points_number_1 == points_number_4){
-            compare_goals([points_number_1, points_number_4]);
-        } 
-        if (points_number_2 == points_number_3){
-            compare_goals([points_number_2, points_number_3]);
-        } 
-        if (points_number_2 == points_number_4){
-            compare_goals([points_number_2, points_number_4]);
-        } 
-        if (points_number_3 == points_number_4){
-            compare_goals([points_number_3, points_number_4]);
-        } 
+    //Função para retirar os pontos adicionados para tomar decisão
+    function normalize_points(inputArray){
+        if((new_Array_points[0].points % 1) != 0){
+            resto = new_Array_points[0].points % 1;
+            new_Array_points[0].points = new_Array_points[0].points - resto;
+        }
+        if((new_Array_points[1].points % 1) != 0){
+            resto = new_Array_points[1].points % 1;
+            new_Array_points[1].points = new_Array_points[1].points - resto;
+        }
+        if((new_Array_points[2].points % 1) != 0){
+            resto = new_Array_points[2].points % 1;
+            new_Array_points[2].points = new_Array_points[2].points - resto;
+        }
+        if((new_Array_points[3].points % 1) != 0){
+            resto = new_Array_points[3].points % 1;
+            new_Array_points[3].points = new_Array_points[3].points - resto;
+        }
     }
-    
-    
-    
-    console.log("array INPUT ", inputArray); 
-    console.log("ODEM DE PONTOS", new_Array_points);
-    console.log("points ", rank_array_points);
 
+    //Função que gera o vetor de pontos atualizado
+    function att_points(inputArray){
+        //array dos pontos
+        points_array = [inputArray[0].points, inputArray[1].points,
+        inputArray[2].points, inputArray[3].points]    
+
+        //Coloca em ordem crescente
+        rank_array_points = points_array.sort(compare_numbers);
+
+        return rank_array_points;
+    }
+    //-----------------------------------------FUNÇÕES DA FUNÇÃO (final)    
+
+    //caso tenha 2 valores repetidos
+    att_points(inputArray);
+    diff_goals(inputArray);
+    rank_points(inputArray);
+  
+    //caso tenha 3 valores repetidos
+    att_points(inputArray);
+    diff_goals(inputArray);
+    rank_points(inputArray);
     
+    //caso tenha 4 valores repetidos (máximo de repetições)
+    att_points(inputArray);
+    diff_goals(inputArray);
+    rank_points(inputArray);
+    
+    //Retirando os pontos auxiliares adicionados
+    normalize_points(inputArray);
+    
+    //Faz o array final com o rank feito e sem repetições
+    //normalize_points(new_Array_points);
+
+    console.log("ARRAY INPUT ---> ", inputArray); 
+    console.log("ARRAY FINAL ---> ", new_Array_points);
+    console.log("VECTOR POINTS --->  ", rank_array_points);
 }
 
 
