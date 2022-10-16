@@ -18,9 +18,9 @@ class Team{
     token;
     name;
     points = 0;
-    goals = 0;   
+    goals = 0; 
+    acc_goals = 0;  
     img;
-    img_tag;
 }
 //======================================
 
@@ -170,7 +170,7 @@ function shuffleArray(inputArray){
 shuffleArray(new_list);   
 
 //Função que relaciona imagem com o objeto ============================================================================
-function img_object(inputArray){
+function img_object(inputArray, width){
 
     //criando array apenas com os nomes dos times
     name_array = [inputArray[0].name, inputArray[1].name,  inputArray[2].name,  inputArray[3].name,
@@ -196,7 +196,7 @@ function img_object(inputArray){
         }
             
     
-    width_object = 70; 
+    width_object = width; 
 
     //relacionando de fato as imagens aos objetos
     
@@ -234,9 +234,7 @@ function img_object(inputArray){
     object_array[31].img = document.getElementById(aux_array[31]).innerHTML = "<img src='/img/uruguai.png' width='"+width_object+"'>";    
 }
 
-//==============================APAGAR APAGAR APAGAR 
-img_object(new_list);
-//==============================APAGAR APAGAR APAGAR     
+img_object(new_list, 70);    
         
     //criando grupos randômicos, pois a lista foi embaralhada
     group_A = [new_list[1], new_list[2], new_list[3], new_list[4]];
@@ -296,10 +294,10 @@ function ranking(inputArray){
 
     //função que compara os gols
     function compare_goals(inputArray){
-        if(inputArray[0].goals > inputArray[1].goals){
+        if(inputArray[0].acc_goals > inputArray[1].acc_goals){
             inputArray[0].points += 0.1;        
         }
-        else if(inputArray[0].goals < inputArray[1].goals){
+        else if(inputArray[0].acc_goals < inputArray[1].acc_goals){
             inputArray[1].points += 0.1;; 
         }
         else{      
@@ -447,9 +445,13 @@ function play_match(inputArray){
         inputArray[1].points += 1;
     }
 
+    //gols da partida
+    inputArray[0].goals = gols_team_1;
+    inputArray[1].goals = gols_team_2;
+
     //acumulando os gols do time
-    inputArray[0].goals += gols_team_1;
-    inputArray[1].goals += gols_team_2;
+    inputArray[0].acc_goals += gols_team_1;
+    inputArray[1].acc_goals += gols_team_2;
 }
 
 
@@ -469,35 +471,165 @@ function match_group(inputArray){
 
 //======================================Começando as simulações dos jogos
 //====================================Fase de grupos (começo)
+img_object(new_list, 40);
 //Partidas 1
-match_group(group_A);
+match_group(group_A);    
+    document.getElementById("group_A_pair1_match1_t1").innerHTML = "<h2>"+group_A[0].name+"</h2>"+group_A[0].img+"<p>Gols: "+group_A[0].goals+"</p>";
+    document.getElementById("group_A_pair1_match1_t2").innerHTML = "<h2>"+group_A[1].name+"</h2>"+group_A[1].img+"<p>Gols: "+group_A[1].goals+"</p>";
+    document.getElementById("group_A_pair2_match1_t1").innerHTML = "<h2>"+group_A[2].name+"</h2>"+group_A[2].img+"<p>Gols: "+group_A[2].goals+"</p>";
+    document.getElementById("group_A_pair2_match1_t2").innerHTML = "<h2>"+group_A[3].name+"</h2>"+group_A[3].img+"<p>Gols: "+group_A[3].goals+"</p>";  
+  
 match_group(group_B);
-match_group(group_C);
-match_group(group_D);
-match_group(group_E);
-match_group(group_F);
-match_group(group_G);
-match_group(group_H);
+    document.getElementById("group_B_pair1_match1_t1").innerHTML = "<h2>"+group_B[0].name+"</h2>"+group_B[0].img+"<p>Gols: "+group_B[0].goals+"</p>";
+    document.getElementById("group_B_pair1_match1_t2").innerHTML = "<h2>"+group_B[1].name+"</h2>"+group_B[1].img+"<p>Gols: "+group_B[1].goals+"</p>";
+    document.getElementById("group_B_pair2_match1_t1").innerHTML = "<h2>"+group_B[2].name+"</h2>"+group_B[2].img+"<p>Gols: "+group_B[2].goals+"</p>";
+    document.getElementById("group_B_pair2_match1_t2").innerHTML = "<h2>"+group_B[3].name+"</h2>"+group_B[3].img+"<p>Gols: "+group_B[3].goals+"</p>"; 
 
+match_group(group_C);
+    document.getElementById("group_C_pair1_match1_t1").innerHTML = "<h2>"+group_C[0].name+"</h2>"+group_C[0].img+"<p>Gols: "+group_C[0].goals+"</p>";
+    document.getElementById("group_C_pair1_match1_t2").innerHTML = "<h2>"+group_C[1].name+"</h2>"+group_C[1].img+"<p>Gols: "+group_C[1].goals+"</p>";
+    document.getElementById("group_C_pair2_match1_t1").innerHTML = "<h2>"+group_C[2].name+"</h2>"+group_C[2].img+"<p>Gols: "+group_C[2].goals+"</p>";
+    document.getElementById("group_C_pair2_match1_t2").innerHTML = "<h2>"+group_C[3].name+"</h2>"+group_C[3].img+"<p>Gols: "+group_C[3].goals+"</p>"; 
+match_group(group_D);
+    document.getElementById("group_D_pair1_match1_t1").innerHTML = "<h2>"+group_D[0].name+"</h2>"+group_D[0].img+"<p>Gols: "+group_D[0].goals+"</p>";
+    document.getElementById("group_D_pair1_match1_t2").innerHTML = "<h2>"+group_D[1].name+"</h2>"+group_D[1].img+"<p>Gols: "+group_D[1].goals+"</p>";
+    document.getElementById("group_D_pair2_match1_t1").innerHTML = "<h2>"+group_D[2].name+"</h2>"+group_D[2].img+"<p>Gols: "+group_D[2].goals+"</p>";
+    document.getElementById("group_D_pair2_match1_t2").innerHTML = "<h2>"+group_D[3].name+"</h2>"+group_D[3].img+"<p>Gols: "+group_D[3].goals+"</p>"; 
+match_group(group_E);
+    document.getElementById("group_E_pair1_match1_t1").innerHTML = "<h2>"+group_E[0].name+"</h2>"+group_E[0].img+"<p>Gols: "+group_E[0].goals+"</p>";
+    document.getElementById("group_E_pair1_match1_t2").innerHTML = "<h2>"+group_E[1].name+"</h2>"+group_E[1].img+"<p>Gols: "+group_E[1].goals+"</p>";
+    document.getElementById("group_E_pair2_match1_t1").innerHTML = "<h2>"+group_E[2].name+"</h2>"+group_E[2].img+"<p>Gols: "+group_E[2].goals+"</p>";
+    document.getElementById("group_E_pair2_match1_t2").innerHTML = "<h2>"+group_E[3].name+"</h2>"+group_E[3].img+"<p>Gols: "+group_E[3].goals+"</p>"; 
+match_group(group_F);
+    document.getElementById("group_F_pair1_match1_t1").innerHTML = "<h2>"+group_F[0].name+"</h2>"+group_F[0].img+"<p>Gols: "+group_F[0].goals+"</p>";
+    document.getElementById("group_F_pair1_match1_t2").innerHTML = "<h2>"+group_F[1].name+"</h2>"+group_F[1].img+"<p>Gols: "+group_F[1].goals+"</p>";
+    document.getElementById("group_F_pair2_match1_t1").innerHTML = "<h2>"+group_F[2].name+"</h2>"+group_F[2].img+"<p>Gols: "+group_F[2].goals+"</p>";
+    document.getElementById("group_F_pair2_match1_t2").innerHTML = "<h2>"+group_F[3].name+"</h2>"+group_F[3].img+"<p>Gols: "+group_F[3].goals+"</p>"; 
+match_group(group_G);
+    document.getElementById("group_G_pair1_match1_t1").innerHTML = "<h2>"+group_G[0].name+"</h2>"+group_G[0].img+"<p>Gols: "+group_G[0].goals+"</p>";
+    document.getElementById("group_G_pair1_match1_t2").innerHTML = "<h2>"+group_G[1].name+"</h2>"+group_G[1].img+"<p>Gols: "+group_G[1].goals+"</p>";
+    document.getElementById("group_G_pair2_match1_t1").innerHTML = "<h2>"+group_G[2].name+"</h2>"+group_G[2].img+"<p>Gols: "+group_G[2].goals+"</p>";
+    document.getElementById("group_G_pair2_match1_t2").innerHTML = "<h2>"+group_G[3].name+"</h2>"+group_G[3].img+"<p>Gols: "+group_G[3].goals+"</p>"; 
+match_group(group_H);
+    document.getElementById("group_H_pair1_match1_t1").innerHTML = "<h2>"+group_H[0].name+"</h2>"+group_H[0].img+"<p>Gols: "+group_H[0].goals+"</p>";
+    document.getElementById("group_H_pair1_match1_t2").innerHTML = "<h2>"+group_H[1].name+"</h2>"+group_H[1].img+"<p>Gols: "+group_H[1].goals+"</p>";
+    document.getElementById("group_H_pair2_match1_t1").innerHTML = "<h2>"+group_H[2].name+"</h2>"+group_H[2].img+"<p>Gols: "+group_H[2].goals+"</p>";
+    document.getElementById("group_H_pair2_match1_t2").innerHTML = "<h2>"+group_H[3].name+"</h2>"+group_H[3].img+"<p>Gols: "+group_H[3].goals+"</p>";  
+    
 //Partidas 2
-match_group(ramdom_group(group_A, 2));
-match_group(ramdom_group(group_B, 2));
-match_group(ramdom_group(group_C, 2));
-match_group(ramdom_group(group_D, 2));
-match_group(ramdom_group(group_E, 2));
-match_group(ramdom_group(group_F, 2));
-match_group(ramdom_group(group_G, 2));
-match_group(ramdom_group(group_H, 2));
+group_A = ramdom_group(group_A, 2)
+match_group(group_A);    
+    console.log("PROVA --> ", group_A);
+    document.getElementById("group_A_pair1_match2_t1").innerHTML = "<h2>"+group_A[0].name+"</h2>"+group_A[0].img+"<p>Gols: "+group_A[0].goals+"</p>";
+    document.getElementById("group_A_pair1_match2_t2").innerHTML = "<h2>"+group_A[1].name+"</h2>"+group_A[1].img+"<p>Gols: "+group_A[1].goals+"</p>";
+    document.getElementById("group_A_pair2_match2_t1").innerHTML = "<h2>"+group_A[2].name+"</h2>"+group_A[2].img+"<p>Gols: "+group_A[2].goals+"</p>";
+    document.getElementById("group_A_pair2_match2_t2").innerHTML = "<h2>"+group_A[3].name+"</h2>"+group_A[3].img+"<p>Gols: "+group_A[3].goals+"</p>";  
+  
+group_B = ramdom_group(group_B, 2)
+match_group(group_B);
+    document.getElementById("group_B_pair1_match2_t1").innerHTML = "<h2>"+group_B[0].name+"</h2>"+group_B[0].img+"<p>Gols: "+group_B[0].goals+"</p>";
+    document.getElementById("group_B_pair1_match2_t2").innerHTML = "<h2>"+group_B[1].name+"</h2>"+group_B[1].img+"<p>Gols: "+group_B[1].goals+"</p>";
+    document.getElementById("group_B_pair2_match2_t1").innerHTML = "<h2>"+group_B[2].name+"</h2>"+group_B[2].img+"<p>Gols: "+group_B[2].goals+"</p>";
+    document.getElementById("group_B_pair2_match2_t2").innerHTML = "<h2>"+group_B[3].name+"</h2>"+group_B[3].img+"<p>Gols: "+group_B[3].goals+"</p>"; 
+    
+group_C = ramdom_group(group_C, 2)
+match_group(group_C);
+    document.getElementById("group_C_pair1_match2_t1").innerHTML = "<h2>"+group_C[0].name+"</h2>"+group_C[0].img+"<p>Gols: "+group_C[0].goals+"</p>";
+    document.getElementById("group_C_pair1_match2_t2").innerHTML = "<h2>"+group_C[1].name+"</h2>"+group_C[1].img+"<p>Gols: "+group_C[1].goals+"</p>";
+    document.getElementById("group_C_pair2_match2_t1").innerHTML = "<h2>"+group_C[2].name+"</h2>"+group_C[2].img+"<p>Gols: "+group_C[2].goals+"</p>";
+    document.getElementById("group_C_pair2_match2_t2").innerHTML = "<h2>"+group_C[3].name+"</h2>"+group_C[3].img+"<p>Gols: "+group_C[3].goals+"</p>"; 
+
+group_D = ramdom_group(group_D, 2)
+match_group(group_D);
+    document.getElementById("group_D_pair1_match2_t1").innerHTML = "<h2>"+group_D[0].name+"</h2>"+group_D[0].img+"<p>Gols: "+group_D[0].goals+"</p>";
+    document.getElementById("group_D_pair1_match2_t2").innerHTML = "<h2>"+group_D[1].name+"</h2>"+group_D[1].img+"<p>Gols: "+group_D[1].goals+"</p>";
+    document.getElementById("group_D_pair2_match2_t1").innerHTML = "<h2>"+group_D[2].name+"</h2>"+group_D[2].img+"<p>Gols: "+group_D[2].goals+"</p>";
+    document.getElementById("group_D_pair2_match2_t2").innerHTML = "<h2>"+group_D[3].name+"</h2>"+group_D[3].img+"<p>Gols: "+group_D[3].goals+"</p>"; 
+
+group_E = ramdom_group(group_E, 2)
+match_group(group_E);
+    document.getElementById("group_E_pair1_match2_t1").innerHTML = "<h2>"+group_E[0].name+"</h2>"+group_E[0].img+"<p>Gols: "+group_E[0].goals+"</p>";
+    document.getElementById("group_E_pair1_match2_t2").innerHTML = "<h2>"+group_E[1].name+"</h2>"+group_E[1].img+"<p>Gols: "+group_E[1].goals+"</p>";
+    document.getElementById("group_E_pair2_match2_t1").innerHTML = "<h2>"+group_E[2].name+"</h2>"+group_E[2].img+"<p>Gols: "+group_E[2].goals+"</p>";
+    document.getElementById("group_E_pair2_match2_t2").innerHTML = "<h2>"+group_E[3].name+"</h2>"+group_E[3].img+"<p>Gols: "+group_E[3].goals+"</p>"; 
+
+group_F = ramdom_group(group_F, 2)
+match_group(group_F);
+    document.getElementById("group_F_pair1_match2_t1").innerHTML = "<h2>"+group_F[0].name+"</h2>"+group_F[0].img+"<p>Gols: "+group_F[0].goals+"</p>";
+    document.getElementById("group_F_pair1_match2_t2").innerHTML = "<h2>"+group_F[1].name+"</h2>"+group_F[1].img+"<p>Gols: "+group_F[1].goals+"</p>";
+    document.getElementById("group_F_pair2_match2_t1").innerHTML = "<h2>"+group_F[2].name+"</h2>"+group_F[2].img+"<p>Gols: "+group_F[2].goals+"</p>";
+    document.getElementById("group_F_pair2_match2_t2").innerHTML = "<h2>"+group_F[3].name+"</h2>"+group_F[3].img+"<p>Gols: "+group_F[3].goals+"</p>"; 
+
+group_G = ramdom_group(group_G, 2)
+match_group(group_G);
+    document.getElementById("group_G_pair1_match2_t1").innerHTML = "<h2>"+group_G[0].name+"</h2>"+group_G[0].img+"<p>Gols: "+group_G[0].goals+"</p>";
+    document.getElementById("group_G_pair1_match2_t2").innerHTML = "<h2>"+group_G[1].name+"</h2>"+group_G[1].img+"<p>Gols: "+group_G[1].goals+"</p>";
+    document.getElementById("group_G_pair2_match2_t1").innerHTML = "<h2>"+group_G[2].name+"</h2>"+group_G[2].img+"<p>Gols: "+group_G[2].goals+"</p>";
+    document.getElementById("group_G_pair2_match2_t2").innerHTML = "<h2>"+group_G[3].name+"</h2>"+group_G[3].img+"<p>Gols: "+group_G[3].goals+"</p>"; 
+
+group_H = ramdom_group(group_H, 2)
+match_group(group_H);
+    document.getElementById("group_H_pair1_match2_t1").innerHTML = "<h2>"+group_H[0].name+"</h2>"+group_H[0].img+"<p>Gols: "+group_H[0].goals+"</p>";
+    document.getElementById("group_H_pair1_match2_t2").innerHTML = "<h2>"+group_H[1].name+"</h2>"+group_H[1].img+"<p>Gols: "+group_H[1].goals+"</p>";
+    document.getElementById("group_H_pair2_match2_t1").innerHTML = "<h2>"+group_H[2].name+"</h2>"+group_H[2].img+"<p>Gols: "+group_H[2].goals+"</p>";
+    document.getElementById("group_H_pair2_match2_t2").innerHTML = "<h2>"+group_H[3].name+"</h2>"+group_H[3].img+"<p>Gols: "+group_H[3].goals+"</p>"; 
 
 //Partidas 3
-match_group(ramdom_group(group_A, 3));
-match_group(ramdom_group(group_B, 3));
-match_group(ramdom_group(group_C, 3));
-match_group(ramdom_group(group_D, 3));
-match_group(ramdom_group(group_E, 3));
-match_group(ramdom_group(group_F, 3));
-match_group(ramdom_group(group_G, 3));
-match_group(ramdom_group(group_H, 3));
+group_A = ramdom_group(group_A, 3)
+match_group(group_A);    
+    document.getElementById("group_A_pair1_match3_t1").innerHTML = "<h2>"+group_A[0].name+"</h2>"+group_A[0].img+"<p>Gols: "+group_A[0].goals+"</p>";
+    document.getElementById("group_A_pair1_match3_t2").innerHTML = "<h2>"+group_A[1].name+"</h2>"+group_A[1].img+"<p>Gols: "+group_A[1].goals+"</p>";
+    document.getElementById("group_A_pair2_match3_t1").innerHTML = "<h2>"+group_A[2].name+"</h2>"+group_A[2].img+"<p>Gols: "+group_A[2].goals+"</p>";
+    document.getElementById("group_A_pair2_match3_t2").innerHTML = "<h2>"+group_A[3].name+"</h2>"+group_A[3].img+"<p>Gols: "+group_A[3].goals+"</p>";  
+
+group_B = ramdom_group(group_B, 3)  
+match_group(group_B);
+    document.getElementById("group_B_pair1_match3_t1").innerHTML = "<h2>"+group_B[0].name+"</h2>"+group_B[0].img+"<p>Gols: "+group_B[0].goals+"</p>";
+    document.getElementById("group_B_pair1_match3_t2").innerHTML = "<h2>"+group_B[1].name+"</h2>"+group_B[1].img+"<p>Gols: "+group_B[1].goals+"</p>";
+    document.getElementById("group_B_pair2_match3_t1").innerHTML = "<h2>"+group_B[2].name+"</h2>"+group_B[2].img+"<p>Gols: "+group_B[2].goals+"</p>";
+    document.getElementById("group_B_pair2_match3_t2").innerHTML = "<h2>"+group_B[3].name+"</h2>"+group_B[3].img+"<p>Gols: "+group_B[3].goals+"</p>"; 
+
+group_C = ramdom_group(group_C, 3)
+match_group(group_C);
+    document.getElementById("group_C_pair1_match3_t1").innerHTML = "<h2>"+group_C[0].name+"</h2>"+group_C[0].img+"<p>Gols: "+group_C[0].goals+"</p>";
+    document.getElementById("group_C_pair1_match3_t2").innerHTML = "<h2>"+group_C[1].name+"</h2>"+group_C[1].img+"<p>Gols: "+group_C[1].goals+"</p>";
+    document.getElementById("group_C_pair2_match3_t1").innerHTML = "<h2>"+group_C[2].name+"</h2>"+group_C[2].img+"<p>Gols: "+group_C[2].goals+"</p>";
+    document.getElementById("group_C_pair2_match3_t2").innerHTML = "<h2>"+group_C[3].name+"</h2>"+group_C[3].img+"<p>Gols: "+group_C[3].goals+"</p>"; 
+
+group_D = ramdom_group(group_D, 3)
+match_group(group_D);
+    document.getElementById("group_D_pair1_match3_t1").innerHTML = "<h2>"+group_D[0].name+"</h2>"+group_D[0].img+"<p>Gols: "+group_D[0].goals+"</p>";
+    document.getElementById("group_D_pair1_match3_t2").innerHTML = "<h2>"+group_D[1].name+"</h2>"+group_D[1].img+"<p>Gols: "+group_D[1].goals+"</p>";
+    document.getElementById("group_D_pair2_match3_t1").innerHTML = "<h2>"+group_D[2].name+"</h2>"+group_D[2].img+"<p>Gols: "+group_D[2].goals+"</p>";
+    document.getElementById("group_D_pair2_match3_t2").innerHTML = "<h2>"+group_D[3].name+"</h2>"+group_D[3].img+"<p>Gols: "+group_D[3].goals+"</p>"; 
+
+group_E = ramdom_group(group_E, 3)
+match_group(group_E);
+    document.getElementById("group_E_pair1_match3_t1").innerHTML = "<h2>"+group_E[0].name+"</h2>"+group_E[0].img+"<p>Gols: "+group_E[0].goals+"</p>";
+    document.getElementById("group_E_pair1_match3_t2").innerHTML = "<h2>"+group_E[1].name+"</h2>"+group_E[1].img+"<p>Gols: "+group_E[1].goals+"</p>";
+    document.getElementById("group_E_pair2_match3_t1").innerHTML = "<h2>"+group_E[2].name+"</h2>"+group_E[2].img+"<p>Gols: "+group_E[2].goals+"</p>";
+    document.getElementById("group_E_pair2_match3_t2").innerHTML = "<h2>"+group_E[3].name+"</h2>"+group_E[3].img+"<p>Gols: "+group_E[3].goals+"</p>"; 
+
+group_F = ramdom_group(group_F, 3)
+match_group(group_F);
+    document.getElementById("group_F_pair1_match3_t1").innerHTML = "<h2>"+group_F[0].name+"</h2>"+group_F[0].img+"<p>Gols: "+group_F[0].goals+"</p>";
+    document.getElementById("group_F_pair1_match3_t2").innerHTML = "<h2>"+group_F[1].name+"</h2>"+group_F[1].img+"<p>Gols: "+group_F[1].goals+"</p>";
+    document.getElementById("group_F_pair2_match3_t1").innerHTML = "<h2>"+group_F[2].name+"</h2>"+group_F[2].img+"<p>Gols: "+group_F[2].goals+"</p>";
+    document.getElementById("group_F_pair2_match3_t2").innerHTML = "<h2>"+group_F[3].name+"</h2>"+group_F[3].img+"<p>Gols: "+group_F[3].goals+"</p>";
+    
+group_G = ramdom_group(group_G, 3)
+match_group(group_G);
+    document.getElementById("group_G_pair1_match3_t1").innerHTML = "<h2>"+group_G[0].name+"</h2>"+group_G[0].img+"<p>Gols: "+group_G[0].goals+"</p>";
+    document.getElementById("group_G_pair1_match3_t2").innerHTML = "<h2>"+group_G[1].name+"</h2>"+group_G[1].img+"<p>Gols: "+group_G[1].goals+"</p>";
+    document.getElementById("group_G_pair2_match3_t1").innerHTML = "<h2>"+group_G[2].name+"</h2>"+group_G[2].img+"<p>Gols: "+group_G[2].goals+"</p>";
+    document.getElementById("group_G_pair2_match3_t2").innerHTML = "<h2>"+group_G[3].name+"</h2>"+group_G[3].img+"<p>Gols: "+group_G[3].goals+"</p>";
+    
+group_H = ramdom_group(group_H, 3)
+match_group(group_H);
+    document.getElementById("group_H_pair1_match3_t1").innerHTML = "<h2>"+group_H[0].name+"</h2>"+group_H[0].img+"<p>Gols: "+group_H[0].goals+"</p>";
+    document.getElementById("group_H_pair1_match3_t2").innerHTML = "<h2>"+group_H[1].name+"</h2>"+group_H[1].img+"<p>Gols: "+group_H[1].goals+"</p>";
+    document.getElementById("group_H_pair2_match3_t1").innerHTML = "<h2>"+group_H[2].name+"</h2>"+group_H[2].img+"<p>Gols: "+group_H[2].goals+"</p>";
+    document.getElementById("group_H_pair2_match3_t2").innerHTML = "<h2>"+group_H[3].name+"</h2>"+group_H[3].img+"<p>Gols: "+group_H[3].goals+"</p>"; 
 
 //Rankeando
 ranking(group_A)

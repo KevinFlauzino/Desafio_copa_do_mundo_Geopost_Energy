@@ -22,8 +22,7 @@ h1{
 
 body{
     text-align: center;
-    margin: 20;
-    padding: ;
+    margin: 20;   
     background-color: #d9faef;
     font-family: Candara;
 }   
@@ -61,6 +60,7 @@ body{
 .group_D{
     background-color: #99ffdd;  
     margin-right: 20px;
+    margin-bottom: 20px;
     
 }
 .group_E{
