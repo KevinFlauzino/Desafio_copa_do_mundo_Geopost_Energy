@@ -20,19 +20,19 @@ class Team{
     points = 0;
     goals = 0;   
     img;
+    img_tag;
 }
 //======================================
-
 
 //======================================Times como objetos
 const team_0 = new Team();
     team_0.name = list_teams[0].Name;
-    team_0.token = list_teams[0].Token;
+    team_0.token = list_teams[0].Token;      
 
 const team_1 = new Team();
     team_1.name = list_teams[1].Name;
-    team_1.token = list_teams[1].Token;
-
+    team_1.token = list_teams[1].Token; 
+    
 const team_2 = new Team();
     team_2.name = list_teams[2].Name;
     team_2.token = list_teams[2].Token;
@@ -155,11 +155,11 @@ const team_31 = new Team();
 
 
 
+
 //Criando uma nova lista com os objetos
 new_list = [team_0, team_1, team_2, team_3, team_4, team_5, team_6, team_7, team_8, team_9, team_10, team_11, team_12,
     team_13, team_14, team_15, team_16, team_17, team_18, team_19, team_20, team_21, team_22, team_23, team_24,
     team_25, team_26, team_27, team_28, team_29, team_30, team_31]
-
 
 //Função que ramdomiza a lista em toda atualização
 function shuffleArray(inputArray){
@@ -169,8 +169,80 @@ function shuffleArray(inputArray){
 //Ramdomizando nova lista
 shuffleArray(new_list);   
 
+//Função que relaciona imagem com o objeto ============================================================================
+function img_object(inputArray){
+
+    //criando array apenas com os nomes dos times
+    name_array = [inputArray[0].name, inputArray[1].name,  inputArray[2].name,  inputArray[3].name,
+                  inputArray[4].name, inputArray[5].name,  inputArray[6].name,  inputArray[7].name,
+                  inputArray[8].name, inputArray[9].name,  inputArray[10].name,  inputArray[11].name,
+                  inputArray[12].name, inputArray[13].name,  inputArray[14].name,  inputArray[15].name,
+                  inputArray[16].name, inputArray[17].name,  inputArray[18].name,  inputArray[19].name,
+                  inputArray[20].name, inputArray[21].name,  inputArray[22].name,  inputArray[23].name,
+                  inputArray[24].name, inputArray[25].name,  inputArray[26].name,  inputArray[27].name,
+                  inputArray[28].name, inputArray[29].name,  inputArray[30].name,  inputArray[31].name];   
+
+    //colocando em ordem alfabética
+    aux_array = name_array.sort(function (a, b){
+        return a.localeCompare(b);});  
+
+    //Ordenando array com objetos em ordem alfabética(nomes dos times)
+    object_array = [];
+        for(j=0; j<32; j+=1){
+            for(i=0; i<32; i+=1){
+                if(inputArray[i].name == aux_array[j])
+                    object_array.push(inputArray[i]);   
+            }
+        }
+            
+    
+    width_object = 70; 
+
+    //relacionando de fato as imagens aos objetos
+    document.ge
+    object_array[0].img = document.getElementById(aux_array[0]).innerHTML = "<img src='/img/alemanha.png' width='"+width_object+"'>";    
+    object_array[1].img = document.getElementById(aux_array[1]).innerHTML = "<img src='/img/arabia_saudita.png' width='"+width_object+"'>"; 
+    object_array[2].img = document.getElementById(aux_array[2]).innerHTML = "<img src='/img/argentina.png' width='"+width_object+"'>"; 
+    object_array[3].img = document.getElementById(aux_array[3]).innerHTML = "<img src='/img/australia.png' width='"+width_object+"'>"; 
+    object_array[4].img = document.getElementById(aux_array[4]).innerHTML = "<img src='/img/belgica.png' width='"+width_object+"'>"; 
+    object_array[5].img = document.getElementById(aux_array[5]).innerHTML = "<img src='/img/brasil.png' width='"+width_object+"'>"; 
+    object_array[6].img = document.getElementById(aux_array[6]).innerHTML = "<img src='/img/camaroes.png' width='"+width_object+"'>"; 
+    object_array[7].img = document.getElementById(aux_array[7]).innerHTML = "<img src='/img/canada.png' width='"+width_object+"'>"; 
+    object_array[8].img = document.getElementById(aux_array[8]).innerHTML = "<img src='/img/coreia_do_sul.png' width='"+width_object+"'>"; 
+    object_array[9].img = document.getElementById(aux_array[9]).innerHTML = "<img src='/img/costa_rica.png' width='"+width_object+"'>"; 
+    object_array[10].img = document.getElementById(aux_array[10]).innerHTML = "<img src='/img/croacia.png' width='"+width_object+"'>"; 
+    object_array[11].img = document.getElementById(aux_array[11]).innerHTML = "<img src='/img/dinamarca.png' width='"+width_object+"'>"; 
+    object_array[12].img = document.getElementById(aux_array[12]).innerHTML = "<img src='/img/equador.png' width='"+width_object+"'>"; 
+    object_array[13].img = document.getElementById(aux_array[13]).innerHTML = "<img src='/img/espanha.png' width='"+width_object+"'>"; 
+    object_array[14].img = document.getElementById(aux_array[14]).innerHTML = "<img src='/img/estados_unidos.png' width='"+width_object+"'>"; 
+    object_array[15].img = document.getElementById(aux_array[15]).innerHTML = "<img src='/img/frança.png' width='"+width_object+"'>"; 
+    object_array[16].img = document.getElementById(aux_array[16]).innerHTML = "<img src='/img/gana.png' width='"+width_object+"'>"; 
+    object_array[17].img = document.getElementById(aux_array[17]).innerHTML = "<img src='/img/holanda.png' width='"+width_object+"'>"; 
+    object_array[18].img = document.getElementById(aux_array[18]).innerHTML = "<img src='/img/inglaterra.png' width='"+width_object+"'>"; 
+    object_array[19].img = document.getElementById(aux_array[19]).innerHTML = "<img src='/img/ira.png' width='"+width_object+"'>"; 
+    object_array[20].img = document.getElementById(aux_array[20]).innerHTML = "<img src='/img/japao.png' width='"+width_object+"'>"; 
+    object_array[21].img = document.getElementById(aux_array[21]).innerHTML = "<img src='/img/marrocos.png' width='"+width_object+"'>"; 
+    object_array[22].img = document.getElementById(aux_array[22]).innerHTML = "<img src='/img/mexico.png' width='"+width_object+"'>"; 
+    object_array[23].img = document.getElementById(aux_array[23]).innerHTML = "<img src='/img/pais_de_gales.png' width='"+width_object+"'>"; 
+    object_array[24].img = document.getElementById(aux_array[24]).innerHTML = "<img src='/img/polonia.png' width='"+width_object+"'>"; 
+    object_array[25].img = document.getElementById(aux_array[25]).innerHTML = "<img src='/img/portugal.png' width='"+width_object+"'>"; 
+    object_array[26].img = document.getElementById(aux_array[26]).innerHTML = "<img src='/img/qatar.png' width='"+width_object+"'>"; 
+    object_array[27].img = document.getElementById(aux_array[27]).innerHTML = "<img src='/img/senegal.png' width='"+width_object+"'>"; 
+    object_array[28].img = document.getElementById(aux_array[28]).innerHTML = "<img src='/img/servia.png' width='"+width_object+"'>"; 
+    object_array[29].img = document.getElementById(aux_array[29]).innerHTML = "<img src='/img/suiça.png' width='"+width_object+"'>"; 
+    object_array[30].img = document.getElementById(aux_array[30]).innerHTML = "<img src='/img/tunisia.png' width='"+width_object+"'>"; 
+    object_array[31].img = document.getElementById(aux_array[31]).innerHTML = "<img src='/img/uruguai.png' width='"+width_object+"'>"; 
+
+}
+
+//==============================APAGAR APAGAR APAGAR 
+img_object(new_list);
+//==============================APAGAR APAGAR APAGAR 
+
     //criando grupos randômicos
     group_A = [new_list[1], new_list[2], new_list[3], new_list[4]];
+        //document.getElementById("Grupo A_1").innerHTML = "<h2>"+group_A[0].name+"<br><span id="+group_A[0].img_tag+"></span></h2>";
+
     group_B = [new_list[5], new_list[6], new_list[7], new_list[8]];
     group_C = [new_list[9], new_list[10], new_list[11], new_list[12]];
     group_D = [new_list[13], new_list[14], new_list[15], new_list[16]];
@@ -431,7 +503,5 @@ teams_oitavas = [winners_A[0], winners_A[1], winners_B[0], winners_B[1],
                  winners_G[0], winners_G[1], winners_H[0], winners_H[1]]
 
 console.log("Times das oitavas --> ", teams_oitavas);
-
-
 
 
