@@ -1,19 +1,42 @@
-@charset "UTF-8";
-
-.pagina{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-}
-
 .groups{
     display: grid;
     grid-column-start: 1;
     grid-column-end: 5;
-    grid-template-columns: 1fr 1fr 1fr 1fr;  
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;  
     font-family: Candara;  
     font-style: oblique;   
 }
+
+h2{
+    font-size: 13px;
+    font-weight: 600;
+    
+}
+
+.jogo1{
+    background-color: #7ff7cf;
+    margin-bottom: 20px;    
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+.jogo2{
+    background-color: #7ff7cf;    
+    border-radius: 20px;
+    border-radius: 20px;
+}
+.jogo3{
+    background-color: #7ff7cf;
+    margin-top: 20px;    
+    border-radius: 20px;
+    border-radius: 20px;
+}
+
+p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+}
+
 
 h1{   
     grid-column-start: 1;
@@ -31,21 +54,28 @@ body{
     display: none;
 }
 
+/*Estilisando botões*/
+.button{    
+    background-color: #7ff7cf;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 25px;
+}
+.button:hover{
+    background-color: rgb(208, 255, 255);
+    color: black;
+}
 .button1{    
     background-color: #7ff7cf;
     color: black;
     border-radius: 4px;
     cursor: pointer;
     font-size: 25px;
-    text-align: center;
-    grid-column-start: 2;
-    grid-column-end: 3;
 }
 .button1:hover{
     background-color: rgb(208, 255, 255);
-    color: black;   
-    grid-column-start: 2;
-    grid-column-end: 3;
+    color: black;
 }
 .button2{    
     background-color: #7ff7cf;
@@ -53,65 +83,160 @@ body{
     border-radius: 4px;
     cursor: pointer;
     font-size: 25px;
-    text-align: center;
-    grid-column-start: 3;
-    grid-column-end: 4;
 }
 .button2:hover{
     background-color: rgb(208, 255, 255);
     color: black;
-    grid-column-start: 3;
-    grid-column-end: 4;
-    
+}
+.button3{    
+    background-color: #7ff7cf;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 25px;
+}
+.button3:hover{
+    background-color: rgb(208, 255, 255);
+    color: black;
+}
+.button4{    
+    background-color: #7ff7cf;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 25px;
+}
+.button4:hover{
+    background-color: rgb(208, 255, 255);
+    color: black;
+}
+.button5{    
+    background-color: #7ff7cf;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 25px;
+}
+.button5:hover{
+    background-color: rgb(208, 255, 255);
+    color: black;
+}
+.button6{    
+    background-color: #7ff7cf;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 25px;
+}
+.button6:hover{
+    background-color: rgb(208, 255, 255);
+    color: black;
 }
 
 .oitavas{
     grid-column-start: 3;  
     text-align: center;
 }
+
 .group_A{
-    background-color: #99ffdd;   
-    grid-template-rows: 2fr 1fr 2fr;
-    margin-left: 20px; 
-    margin-right: 20px;
-    margin-bottom: 20px;
+    background-color: #99ffdd; 
+    margin-left: 10px;   
+    margin-bottom: 40px;
+    border-radius: 20px;    
 }
 .group_B{
     background-color: #99ffdd;  
-    margin-right: 20px;
-    margin-bottom: 20px;
+    margin-left: 20px; 
+    margin-bottom: 40px;
+    border-radius: 20px;
 }
 .group_C{
     background-color: #99ffdd; 
-    margin-right: 20px; 
-    margin-bottom: 20px;
+    margin-left: 20px; 
+    margin-bottom: 40px;
+    border-radius: 20px;
 }
 .group_D{
     background-color: #99ffdd;  
-    margin-right: 20px;
-    margin-bottom: 20px;
+    margin-left: 20px; 
+    margin-bottom: 40px;
+    border-radius: 20px;
     
 }
 .group_E{
-    background-color: #99ffdd;
+    background-color: #99ffdd;    
     margin-left: 20px; 
-    margin-right: 20px;  
+    border-radius: 20px;
+    margin-bottom: 40px;
 }
 .group_F{
     background-color: #99ffdd;  
-    margin-right: 20px;
+    margin-left: 20px; 
+    border-radius: 20px;
+    margin-bottom: 40px;
 }
 .group_G{
     background-color: #99ffdd;
-    margin-right: 20px;  
+    margin-left: 20px;     
+    border-radius: 20px;
+    margin-bottom: 40px;
 }
 .group_H{
     background-color: #99ffdd;  
-    margin-right: 20px;
+    margin-left: 20px; 
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-bottom: 40px;
 }
 
 .half{
-    display: inline-block;
+    grid-template-columns: 2fr 1fr 2fr;
+    display: grid;    
+}
+
+.vs{
+    padding-top:100%;
+}
+
+.title_games{
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+/*Ocultando e voltando botões e conteúdos a visibilidade*/
+.simulando_fase_de_grupos{
+    display:none;
+}
+.oitavas{
+    display:none;
+}
+.quartas{
+    display:none;
+}
+.semi{
+    display:none;
+}
+.final{
+    display:none;
+}
+
+
+/*Botões*/
+.button1{
+    display:none;
+}
+.button3{
+    display:none;
+}
+.button4{
+    display:none;
+}
+.button5{
+    display:none;
+}
+.button6{
+    display:none;
 }
 
 
