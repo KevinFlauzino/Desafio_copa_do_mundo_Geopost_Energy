@@ -15,20 +15,18 @@ h2{
 
 .jogo1{
     background-color: #7ff7cf;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 20px;    
     border-radius: 20px;
+    margin-bottom: 40px;
 }
 .jogo2{
-    background-color: #7ff7cf;
-    padding-bottom: 20px;
+    background-color: #7ff7cf;    
     border-radius: 20px;
     border-radius: 20px;
 }
 .jogo3{
     background-color: #7ff7cf;
-    margin-top: 20px;
-    padding-bottom: 20px;
+    margin-top: 20px;    
     border-radius: 20px;
     border-radius: 20px;
 }
@@ -56,9 +54,16 @@ body{
     display: none;
 }
 
-.button_groups{
-    grid-column-start: 2;   
-    text-align: center;
+.button{    
+    background-color: #7ff7cf;
+    color: black;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 25px;
+}
+.button:hover{
+    background-color: rgb(208, 255, 255);
+    color: black;
 }
 
 .oitavas{
@@ -68,50 +73,53 @@ body{
 
 .group_A{
     background-color: #99ffdd; 
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    border-radius: 20px;
-    
+    margin-left: 10px;   
+    margin-bottom: 40px;
+    border-radius: 20px;    
 }
 .group_B{
     background-color: #99ffdd;  
-    margin-right: 20px;
-    margin-bottom: 20px;
+    margin-left: 20px; 
+    margin-bottom: 40px;
     border-radius: 20px;
 }
 .group_C{
     background-color: #99ffdd; 
-    margin-right: 20px; 
-    margin-bottom: 20px;
+    margin-left: 20px; 
+    margin-bottom: 40px;
     border-radius: 20px;
 }
 .group_D{
     background-color: #99ffdd;  
-    margin-right: 20px;
-    margin-bottom: 20px;
+    margin-left: 20px; 
+    margin-bottom: 40px;
     border-radius: 20px;
     
 }
 .group_E{
     background-color: #99ffdd;    
-    margin-right: 20px;  
+    margin-left: 20px; 
     border-radius: 20px;
+    margin-bottom: 40px;
 }
 .group_F{
     background-color: #99ffdd;  
-    margin-right: 20px;
+    margin-left: 20px; 
     border-radius: 20px;
+    margin-bottom: 40px;
 }
 .group_G{
     background-color: #99ffdd;
-    margin-right: 20px;  
+    margin-left: 20px;     
     border-radius: 20px;
+    margin-bottom: 40px;
 }
 .group_H{
     background-color: #99ffdd;  
-    margin-right: 20px;
+    margin-left: 20px; 
     border-radius: 20px;
+    margin-right: 10px;
+    margin-bottom: 40px;
 }
 
 .half{

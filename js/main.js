@@ -282,8 +282,36 @@ img_object(new_list, 70);
             
 //======================================
 
+//função que encontra o ganhador entre dois times (gols)
+function rank_two(inputArray){ 
+    
+    compare_goals([inputArray[0], inputArray[1]]);
 
-//======================================Função que cria um Rank dos times (começo)
+    inputArray[0].acc_goals = 0;
+    inputArray[1].acc_goals = 0;
+    inputArray[0].points = 0;
+    inputArray[1].points = 0;
+
+    //função que compara os gols
+    function compare_goals(inputArray){
+        if(inputArray[0].goals > inputArray[1].goals){
+            winner = inputArray[0];        
+        }
+        else if(inputArray[0].goals < inputArray[1].goals){
+            winner = inputArray[1];  
+        }
+        else{      
+            lucky = [inputArray[0], inputArray[1]];
+            shuffleArray(lucky) ;
+
+            winner = [lucky[0]];  
+        }
+    }       
+    return winner;
+}
+
+
+//======================================Função que cria um Rank entre 4 times e devolve os 2 primeiros do rank (começo)
 function ranking(inputArray){ 
 
     //-----------------------------------------FUNÇÕES DA FUNÇÃO (começo)
@@ -668,4 +696,102 @@ teams_oitavas = [winners_A[0], winners_A[1], winners_B[0], winners_B[1],
 
 console.log("Times das oitavas --> ", teams_oitavas);
 
+play_match([winners_A[0], winners_B[1]]);
+rank_two([winners_A[0], winners_B[1]])
+console.log("A1xB2  ", winners_A[0], winners_B[1],"\nVENCEDOR --> ", winner);
+winner1 = winner;
 
+play_match([winners_C[0], winners_D[1]]);
+rank_two([winners_C[0], winners_D[1]])
+console.log("C1xD2  ", winners_C[0], winners_D[1],"\nVENCEDOR --> ", winner);
+winner2 = winner;
+
+play_match([winners_E[0], winners_F[1]]);
+rank_two([winners_E[0], winners_F[1]])
+console.log("E1xF2  ", winners_E[0], winners_F[1],"\nVENCEDOR --> ", winner);
+winner3 = winner;
+
+play_match([winners_G[0], winners_H[1]]);
+rank_two([winners_G[0], winners_H[1]])
+console.log("G1xH2  ", winners_G[0], winners_H[1],"\nVENCEDOR --> ", winner);
+winner4 = winner;
+
+play_match([winners_B[0], winners_A[1]]);
+rank_two([winners_B[0], winners_A[1]])
+console.log("B1xA2  ", winners_B[0], winners_A[1],"\nVENCEDOR --> ", winner);
+winner5 = winner;
+
+play_match([winners_D[0], winners_C[1]]);
+rank_two([winners_D[0], winners_C[1]])
+console.log("D1xC2  ", winners_D[0], winners_C[1],"\nVENCEDOR --> ", winner);
+winner6 = winner;
+
+play_match([winners_F[0], winners_E[1]]);
+rank_two([winners_F[0], winners_E[1]])
+console.log("F1xE2  ", winners_F[0], winners_E[1],"\nVENCEDOR --> ", winner);
+winner7 = winner;
+
+play_match([winners_H[0], winners_G[1]]);
+rank_two([winners_H[0], winners_G[1]])
+console.log("H1xG2  ", winners_H[0], winners_G[1],"\nVENCEDOR --> ", winner);
+winner8 = winner;
+
+oitavas_winners =   [winner1, winner2, winner3, winner4,
+                    winner5, winner6, winner7, winner8];
+
+console.log("VECEDORES DAS OITAVAS --> ", oitavas_winners);
+//====================================Oitavas (final)
+
+
+//====================================Quartas (começo)
+play_match([oitavas_winners[0], oitavas_winners[1]]);
+rank_two([oitavas_winners[0], oitavas_winners[1]])
+console.log("O1xO2  ", oitavas_winners[0], oitavas_winners[1],"\nVENCEDOR --> ", winner);
+winner_quartas1 = winner;
+
+play_match([oitavas_winners[2], oitavas_winners[3]]);
+rank_two([oitavas_winners[2], oitavas_winners[3]])
+console.log("O3xO4  ", oitavas_winners[2], oitavas_winners[3],"\nVENCEDOR --> ", winner);
+winner_quartas2 = winner;
+
+play_match([oitavas_winners[4], oitavas_winners[5]]);
+rank_two([oitavas_winners[4], oitavas_winners[5]])
+console.log("O5xO6  ", oitavas_winners[4], oitavas_winners[5],"\nVENCEDOR --> ", winner);
+winner_quartas3 = winner;
+
+play_match([oitavas_winners[6], oitavas_winners[7]]);
+rank_two([oitavas_winners[6], oitavas_winners[7]])
+console.log("O7xO8  ", oitavas_winners[6], oitavas_winners[7],"\nVENCEDOR --> ", winner);
+winner_quartas4 = winner;
+
+quartas_winners = [ winner_quartas1, winner_quartas2, 
+                    winner_quartas3, winner_quartas4];
+
+console.log("VECEDORES DAS QUARTAS --> ", quartas_winners);
+//====================================Quartas (final)
+
+//====================================Semi (começo)
+play_match([quartas_winners[0], quartas_winners[1]]);
+rank_two([quartas_winners[0], quartas_winners[1]])
+console.log("O1xO2  ", quartas_winners[0], quartas_winners[1],"\nVENCEDOR --> ", winner);
+winner_semi1 = winner;
+
+play_match([quartas_winners[2], quartas_winners[3]]);
+rank_two([quartas_winners[2], quartas_winners[3]])
+console.log("O3xO4  ", quartas_winners[2], quartas_winners[3],"\nVENCEDOR --> ", winner);
+winner_semi2 = winner;
+
+semi_winners = [winner_semi1, winner_semi2];
+
+console.log("VECEDORES DAS SEMIS --> ", semi_winners);
+
+//====================================Semi (final)
+
+//====================================Final (começo)
+play_match([semi_winners[0], semi_winners[1]]);
+rank_two([semi_winners[0], semi_winners[1]])
+console.log("O1xO2  ", semi_winners[0], semi_winners[1],"\nVENCEDOR --> ", winner);
+biggest_winner = winner;
+
+console.log("GRANDE VENCEDOR DA COPA --> ", biggest_winner);
+//====================================Final (começo)
