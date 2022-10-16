@@ -199,7 +199,7 @@ function img_object(inputArray){
     width_object = 70; 
 
     //relacionando de fato as imagens aos objetos
-    document.ge
+    
     object_array[0].img = document.getElementById(aux_array[0]).innerHTML = "<img src='/img/alemanha.png' width='"+width_object+"'>";    
     object_array[1].img = document.getElementById(aux_array[1]).innerHTML = "<img src='/img/arabia_saudita.png' width='"+width_object+"'>"; 
     object_array[2].img = document.getElementById(aux_array[2]).innerHTML = "<img src='/img/argentina.png' width='"+width_object+"'>"; 
@@ -231,25 +231,57 @@ function img_object(inputArray){
     object_array[28].img = document.getElementById(aux_array[28]).innerHTML = "<img src='/img/servia.png' width='"+width_object+"'>"; 
     object_array[29].img = document.getElementById(aux_array[29]).innerHTML = "<img src='/img/suiça.png' width='"+width_object+"'>"; 
     object_array[30].img = document.getElementById(aux_array[30]).innerHTML = "<img src='/img/tunisia.png' width='"+width_object+"'>"; 
-    object_array[31].img = document.getElementById(aux_array[31]).innerHTML = "<img src='/img/uruguai.png' width='"+width_object+"'>"; 
-
+    object_array[31].img = document.getElementById(aux_array[31]).innerHTML = "<img src='/img/uruguai.png' width='"+width_object+"'>";    
 }
 
 //==============================APAGAR APAGAR APAGAR 
 img_object(new_list);
-//==============================APAGAR APAGAR APAGAR 
-
-    //criando grupos randômicos
+//==============================APAGAR APAGAR APAGAR     
+        
+    //criando grupos randômicos, pois a lista foi embaralhada
     group_A = [new_list[1], new_list[2], new_list[3], new_list[4]];
-        //document.getElementById("Grupo A_1").innerHTML = "<h2>"+group_A[0].name+"<br><span id="+group_A[0].img_tag+"></span></h2>";
-
+        document.getElementById("group_A_1").innerHTML = "<h2>"+group_A[0].name+"<br>"+group_A[0].img;
+        document.getElementById("group_A_2").innerHTML = "<h2>"+group_A[1].name+"<br>"+group_A[1].img;
+        document.getElementById("group_A_3").innerHTML = "<h2>"+group_A[2].name+"<br>"+group_A[2].img;
+        document.getElementById("group_A_4").innerHTML = "<h2>"+group_A[3].name+"<br>"+group_A[3].img; 
     group_B = [new_list[5], new_list[6], new_list[7], new_list[8]];
+        document.getElementById("group_B_1").innerHTML = "<h2>"+group_B[0].name+"<br>"+group_B[0].img;
+        document.getElementById("group_B_2").innerHTML = "<h2>"+group_B[1].name+"<br>"+group_B[1].img;
+        document.getElementById("group_B_3").innerHTML = "<h2>"+group_B[2].name+"<br>"+group_B[2].img;
+        document.getElementById("group_B_4").innerHTML = "<h2>"+group_B[3].name+"<br>"+group_B[3].img;   
     group_C = [new_list[9], new_list[10], new_list[11], new_list[12]];
+        document.getElementById("group_C_1").innerHTML = "<h2>"+group_C[0].name+"<br>"+group_C[0].img;
+        document.getElementById("group_C_2").innerHTML = "<h2>"+group_C[1].name+"<br>"+group_C[1].img;
+        document.getElementById("group_C_3").innerHTML = "<h2>"+group_C[2].name+"<br>"+group_C[2].img;
+        document.getElementById("group_C_4").innerHTML = "<h2>"+group_C[3].name+"<br>"+group_C[3].img;    
     group_D = [new_list[13], new_list[14], new_list[15], new_list[16]];
+        document.getElementById("group_D_1").innerHTML = "<h2>"+group_D[0].name+"<br>"+group_D[0].img;
+        document.getElementById("group_D_2").innerHTML = "<h2>"+group_D[1].name+"<br>"+group_D[1].img;
+        document.getElementById("group_D_3").innerHTML = "<h2>"+group_D[2].name+"<br>"+group_D[2].img;
+        document.getElementById("group_D_4").innerHTML = "<h2>"+group_D[3].name+"<br>"+group_D[3].img;   
     group_E = [new_list[17], new_list[18], new_list[19], new_list[20]];
-    group_F = [new_list[21], new_list[22], new_list[23], new_list[24]];
-    group_G = [new_list[25], new_list[26], new_list[27], new_list[28]];
+        document.getElementById("group_E_1").innerHTML = "<h2>"+group_E[0].name+"<br>"+group_E[0].img;
+        document.getElementById("group_E_2").innerHTML = "<h2>"+group_E[1].name+"<br>"+group_E[1].img;
+        document.getElementById("group_E_3").innerHTML = "<h2>"+group_E[2].name+"<br>"+group_E[2].img;
+        document.getElementById("group_E_4").innerHTML = "<h2>"+group_E[3].name+"<br>"+group_E[3].img; 
+    group_F = [new_list[21], new_list[22], new_list[23], new_list[24]];        
+        document.getElementById("group_F_1").innerHTML = "<h2>"+group_F[0].name+"<br>"+group_F[0].img;
+        document.getElementById("group_F_2").innerHTML = "<h2>"+group_F[1].name+"<br>"+group_F[1].img;
+        document.getElementById("group_F_3").innerHTML = "<h2>"+group_F[2].name+"<br>"+group_F[2].img;
+        document.getElementById("group_F_4").innerHTML = "<h2>"+group_F[3].name+"<br>"+group_F[3].img; 
+    group_G = [new_list[25], new_list[26], new_list[27], new_list[28]];        
+        document.getElementById("group_G_1").innerHTML = "<h2>"+group_G[0].name+"<br>"+group_G[0].img;
+        document.getElementById("group_G_2").innerHTML = "<h2>"+group_G[1].name+"<br>"+group_G[1].img;
+        document.getElementById("group_G_3").innerHTML = "<h2>"+group_G[2].name+"<br>"+group_G[2].img;
+        document.getElementById("group_G_4").innerHTML = "<h2>"+group_G[3].name+"<br>"+group_G[3].img;  
     group_H = [new_list[29], new_list[30], new_list[31], new_list[0]];
+        document.getElementById("group_H_1").innerHTML = "<h2>"+group_H[0].name+"<br>"+group_H[0].img;
+        document.getElementById("group_H_2").innerHTML = "<h2>"+group_H[1].name+"<br>"+group_H[1].img;
+        document.getElementById("group_H_3").innerHTML = "<h2>"+group_H[2].name+"<br>"+group_H[2].img;
+        document.getElementById("group_H_4").innerHTML = "<h2>"+group_H[3].name+"<br>"+group_H[3].img;  
+
+        console.log("GRUPO A --> ", group_A);
+            
 //======================================
 
 
