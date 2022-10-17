@@ -277,9 +277,6 @@ img_object(new_list, 70);
         document.getElementById("group_H_2").innerHTML = "<h2>"+group_H[1].name+"<br>"+group_H[1].img;
         document.getElementById("group_H_3").innerHTML = "<h2>"+group_H[2].name+"<br>"+group_H[2].img;
         document.getElementById("group_H_4").innerHTML = "<h2>"+group_H[3].name+"<br>"+group_H[3].img;  
-
-        console.log("GRUPO A --> ", group_A);
-            
 //======================================
 
 //função que encontra o ganhador entre dois times (gols)
@@ -304,12 +301,11 @@ function rank_two(inputArray){
             lucky = [inputArray[0], inputArray[1]];
             shuffleArray(lucky) ;
 
-            winner = [lucky[0]];  
+            winner = lucky[0];            
         }
     }       
     return winner;
 }
-
 
 //======================================Função que cria um Rank entre 4 times e devolve os 2 primeiros do rank (começo)
 function ranking(inputArray){ 
@@ -662,28 +658,36 @@ match_group(group_H);
 //Rankeando
 ranking(group_A)
     winners_A = winners;
-    console.log("A --> ", winners_A);
+    document.getElementById("group_A_winner_fg_1").innerHTML = "<h2>"+winners_A[0].name+"</h2>"+winners_A[0].img+"<p>Pontos: "+winners_A[0].points+"</p>";
+    document.getElementById("group_A_winner_fg_2").innerHTML = "<h2>"+winners_A[1].name+"</h2>"+winners_A[1].img+"<p>Pontos: "+winners_A[1].points+"</p>";
 ranking(group_B)
     winners_B = winners;
-    console.log("B --> ", winners_B);
+    document.getElementById("group_B_winner_fg_1").innerHTML = "<h2>"+winners_B[0].name+"</h2>"+winners_B[0].img+"<p>Pontos: "+winners_B[0].points+"</p>";
+    document.getElementById("group_B_winner_fg_2").innerHTML = "<h2>"+winners_B[1].name+"</h2>"+winners_B[1].img+"<p>Pontos: "+winners_B[1].points+"</p>";
 ranking(group_C)
     winners_C = winners;
-    console.log("C --> ", winners_C);
+    document.getElementById("group_C_winner_fg_1").innerHTML = "<h2>"+winners_C[0].name+"</h2>"+winners_C[0].img+"<p>Pontos: "+winners_C[0].points+"</p>";
+    document.getElementById("group_C_winner_fg_2").innerHTML = "<h2>"+winners_C[1].name+"</h2>"+winners_C[1].img+"<p>Pontos: "+winners_C[1].points+"</p>";
 ranking(group_D)
     winners_D = winners;
-    console.log("D --> ", winners_D);
+    document.getElementById("group_D_winner_fg_1").innerHTML = "<h2>"+winners_D[0].name+"</h2>"+winners_D[0].img+"<p>Pontos: "+winners_D[0].points+"</p>";
+    document.getElementById("group_D_winner_fg_2").innerHTML = "<h2>"+winners_D[1].name+"</h2>"+winners_D[1].img+"<p>Pontos: "+winners_D[1].points+"</p>";
 ranking(group_E)
     winners_E = winners;
-    console.log("E --> ", winners_E);
+    document.getElementById("group_E_winner_fg_1").innerHTML = "<h2>"+winners_E[0].name+"</h2>"+winners_E[0].img+"<p>Pontos: "+winners_E[0].points+"</p>";
+    document.getElementById("group_E_winner_fg_2").innerHTML = "<h2>"+winners_E[1].name+"</h2>"+winners_E[1].img+"<p>Pontos: "+winners_E[1].points+"</p>";
 ranking(group_F)
     winners_F = winners;
-    console.log("F --> ", winners_F);
+    document.getElementById("group_F_winner_fg_1").innerHTML = "<h2>"+winners_F[0].name+"</h2>"+winners_F[0].img+"<p>Pontos: "+winners_F[0].points+"</p>";
+    document.getElementById("group_F_winner_fg_2").innerHTML = "<h2>"+winners_F[1].name+"</h2>"+winners_F[1].img+"<p>Pontos: "+winners_F[1].points+"</p>";
 ranking(group_G)
     winners_G = winners;
-    console.log("G --> ", winners_G);
+    document.getElementById("group_G_winner_fg_1").innerHTML = "<h2>"+winners_G[0].name+"</h2>"+winners_G[0].img+"<p>Pontos: "+winners_G[0].points+"</p>";
+    document.getElementById("group_G_winner_fg_2").innerHTML = "<h2>"+winners_G[1].name+"</h2>"+winners_G[1].img+"<p>Pontos: "+winners_G[1].points+"</p>";
 ranking(group_H)
     winners_H = winners;
-    console.log("H --> ", winners_H);
+    document.getElementById("group_H_winner_fg_1").innerHTML = "<h2>"+winners_H[0].name+"</h2>"+winners_H[0].img+"<p>Pontos: "+winners_H[0].points+"</p>";
+    document.getElementById("group_H_winner_fg_2").innerHTML = "<h2>"+winners_H[1].name+"</h2>"+winners_H[1].img+"<p>Pontos: "+winners_H[1].points+"</p>";
 
 //====================================Fase de grupos (final)
 
@@ -698,42 +702,50 @@ console.log("Times das oitavas --> ", teams_oitavas);
 
 play_match([winners_A[0], winners_B[1]]);
 rank_two([winners_A[0], winners_B[1]])
-console.log("A1xB2  ", winners_A[0], winners_B[1],"\nVENCEDOR --> ", winner);
+document.getElementById("oitavas_c1_t1").innerHTML = "<h2>"+winners_A[0].name+"</h2>"+winners_A[0].img+"<p>Gols: "+winners_A[0].goals+"</p>";
+document.getElementById("oitavas_c1_t2").innerHTML = "<h2>"+winners_B[1].name+"</h2>"+winners_B[1].img+"<p>Gols: "+winners_B[1].goals+"</p>";
 winner1 = winner;
 
 play_match([winners_C[0], winners_D[1]]);
 rank_two([winners_C[0], winners_D[1]])
-console.log("C1xD2  ", winners_C[0], winners_D[1],"\nVENCEDOR --> ", winner);
+document.getElementById("oitavas_c2_t1").innerHTML = "<h2>"+winners_C[0].name+"</h2>"+winners_C[0].img+"<p>Gols: "+winners_C[0].goals+"</p>";
+document.getElementById("oitavas_c2_t2").innerHTML = "<h2>"+winners_D[1].name+"</h2>"+winners_D[1].img+"<p>Gols: "+winners_D[1].goals+"</p>";
 winner2 = winner;
 
 play_match([winners_E[0], winners_F[1]]);
 rank_two([winners_E[0], winners_F[1]])
-console.log("E1xF2  ", winners_E[0], winners_F[1],"\nVENCEDOR --> ", winner);
+document.getElementById("oitavas_c3_t1").innerHTML = "<h2>"+winners_E[0].name+"</h2>"+winners_E[0].img+"<p>Gols: "+winners_E[0].goals+"</p>";
+document.getElementById("oitavas_c3_t2").innerHTML = "<h2>"+winners_F[1].name+"</h2>"+winners_F[1].img+"<p>Gols: "+winners_F[1].goals+"</p>";
 winner3 = winner;
 
 play_match([winners_G[0], winners_H[1]]);
 rank_two([winners_G[0], winners_H[1]])
-console.log("G1xH2  ", winners_G[0], winners_H[1],"\nVENCEDOR --> ", winner);
+document.getElementById("oitavas_c4_t1").innerHTML = "<h2>"+winners_G[0].name+"</h2>"+winners_G[0].img+"<p>Gols: "+winners_G[0].goals+"</p>";
+document.getElementById("oitavas_c4_t2").innerHTML = "<h2>"+winners_H[1].name+"</h2>"+winners_H[1].img+"<p>Gols: "+winners_H[1].goals+"</p>";
 winner4 = winner;
 
 play_match([winners_B[0], winners_A[1]]);
 rank_two([winners_B[0], winners_A[1]])
-console.log("B1xA2  ", winners_B[0], winners_A[1],"\nVENCEDOR --> ", winner);
+document.getElementById("oitavas_c5_t1").innerHTML = "<h2>"+winners_B[0].name+"</h2>"+winners_B[0].img+"<p>Gols: "+winners_B[0].goals+"</p>";
+document.getElementById("oitavas_c5_t2").innerHTML = "<h2>"+winners_A[1].name+"</h2>"+winners_A[1].img+"<p>Gols: "+winners_A[1].goals+"</p>";
 winner5 = winner;
 
 play_match([winners_D[0], winners_C[1]]);
 rank_two([winners_D[0], winners_C[1]])
-console.log("D1xC2  ", winners_D[0], winners_C[1],"\nVENCEDOR --> ", winner);
+document.getElementById("oitavas_c6_t1").innerHTML = "<h2>"+winners_D[0].name+"</h2>"+winners_D[0].img+"<p>Gols: "+winners_D[0].goals+"</p>";
+document.getElementById("oitavas_c6_t2").innerHTML = "<h2>"+winners_C[1].name+"</h2>"+winners_C[1].img+"<p>Gols: "+winners_C[1].goals+"</p>";
 winner6 = winner;
 
 play_match([winners_F[0], winners_E[1]]);
 rank_two([winners_F[0], winners_E[1]])
-console.log("F1xE2  ", winners_F[0], winners_E[1],"\nVENCEDOR --> ", winner);
+document.getElementById("oitavas_c7_t1").innerHTML = "<h2>"+winners_F[0].name+"</h2>"+winners_F[0].img+"<p>Gols: "+winners_F[0].goals+"</p>";
+document.getElementById("oitavas_c7_t2").innerHTML = "<h2>"+winners_E[1].name+"</h2>"+winners_E[1].img+"<p>Gols: "+winners_E[1].goals+"</p>";
 winner7 = winner;
 
 play_match([winners_H[0], winners_G[1]]);
 rank_two([winners_H[0], winners_G[1]])
-console.log("H1xG2  ", winners_H[0], winners_G[1],"\nVENCEDOR --> ", winner);
+document.getElementById("oitavas_c8_t1").innerHTML = "<h2>"+winners_H[0].name+"</h2>"+winners_H[0].img+"<p>Gols: "+winners_H[0].goals+"</p>";
+document.getElementById("oitavas_c8_t2").innerHTML = "<h2>"+winners_G[1].name+"</h2>"+winners_G[1].img+"<p>Gols: "+winners_G[1].goals+"</p>";
 winner8 = winner;
 
 oitavas_winners =   [winner1, winner2, winner3, winner4,
@@ -746,52 +758,58 @@ console.log("VECEDORES DAS OITAVAS --> ", oitavas_winners);
 //====================================Quartas (começo)
 play_match([oitavas_winners[0], oitavas_winners[1]]);
 rank_two([oitavas_winners[0], oitavas_winners[1]])
-console.log("O1xO2  ", oitavas_winners[0], oitavas_winners[1],"\nVENCEDOR --> ", winner);
+document.getElementById("quartas_c1_t1").innerHTML = "<h2>"+oitavas_winners[0].name+"</h2>"+oitavas_winners[0].img+"<p>Gols: "+oitavas_winners[0].goals+"</p>";
+document.getElementById("quartas_c1_t2").innerHTML = "<h2>"+oitavas_winners[1].name+"</h2>"+oitavas_winners[1].img+"<p>Gols: "+oitavas_winners[1].goals+"</p>";
 winner_quartas1 = winner;
 
 play_match([oitavas_winners[2], oitavas_winners[3]]);
 rank_two([oitavas_winners[2], oitavas_winners[3]])
-console.log("O3xO4  ", oitavas_winners[2], oitavas_winners[3],"\nVENCEDOR --> ", winner);
+document.getElementById("quartas_c2_t1").innerHTML = "<h2>"+oitavas_winners[2].name+"</h2>"+oitavas_winners[2].img+"<p>Gols: "+oitavas_winners[2].goals+"</p>";
+document.getElementById("quartas_c2_t2").innerHTML = "<h2>"+oitavas_winners[3].name+"</h2>"+oitavas_winners[3].img+"<p>Gols: "+oitavas_winners[3].goals+"</p>";
 winner_quartas2 = winner;
 
 play_match([oitavas_winners[4], oitavas_winners[5]]);
 rank_two([oitavas_winners[4], oitavas_winners[5]])
-console.log("O5xO6  ", oitavas_winners[4], oitavas_winners[5],"\nVENCEDOR --> ", winner);
+document.getElementById("quartas_c3_t1").innerHTML = "<h2>"+oitavas_winners[4].name+"</h2>"+oitavas_winners[4].img+"<p>Gols: "+oitavas_winners[4].goals+"</p>";
+document.getElementById("quartas_c3_t2").innerHTML = "<h2>"+oitavas_winners[5].name+"</h2>"+oitavas_winners[5].img+"<p>Gols: "+oitavas_winners[5].goals+"</p>";
 winner_quartas3 = winner;
 
 play_match([oitavas_winners[6], oitavas_winners[7]]);
 rank_two([oitavas_winners[6], oitavas_winners[7]])
-console.log("O7xO8  ", oitavas_winners[6], oitavas_winners[7],"\nVENCEDOR --> ", winner);
+document.getElementById("quartas_c4_t1").innerHTML = "<h2>"+oitavas_winners[6].name+"</h2>"+oitavas_winners[6].img+"<p>Gols: "+oitavas_winners[6].goals+"</p>";
+document.getElementById("quartas_c4_t2").innerHTML = "<h2>"+oitavas_winners[7].name+"</h2>"+oitavas_winners[7].img+"<p>Gols: "+oitavas_winners[7].goals+"</p>";
 winner_quartas4 = winner;
 
 quartas_winners = [ winner_quartas1, winner_quartas2, 
                     winner_quartas3, winner_quartas4];
 
-console.log("VECEDORES DAS QUARTAS --> ", quartas_winners);
 //====================================Quartas (final)
 
 //====================================Semi (começo)
 play_match([quartas_winners[0], quartas_winners[1]]);
 rank_two([quartas_winners[0], quartas_winners[1]])
-console.log("O1xO2  ", quartas_winners[0], quartas_winners[1],"\nVENCEDOR --> ", winner);
+document.getElementById("semi_c1_t1").innerHTML = "<h2>"+quartas_winners[0].name+"</h2>"+quartas_winners[0].img+"<p>Gols: "+quartas_winners[0].goals+"</p>";
+document.getElementById("semi_c1_t2").innerHTML = "<h2>"+quartas_winners[1].name+"</h2>"+quartas_winners[1].img+"<p>Gols: "+quartas_winners[1].goals+"</p>";
 winner_semi1 = winner;
 
 play_match([quartas_winners[2], quartas_winners[3]]);
 rank_two([quartas_winners[2], quartas_winners[3]])
-console.log("O3xO4  ", quartas_winners[2], quartas_winners[3],"\nVENCEDOR --> ", winner);
+document.getElementById("semi_c2_t1").innerHTML = "<h2>"+quartas_winners[2].name+"</h2>"+quartas_winners[2].img+"<p>Gols: "+quartas_winners[2].goals+"</p>";
+document.getElementById("semi_c2_t2").innerHTML = "<h2>"+quartas_winners[3].name+"</h2>"+quartas_winners[3].img+"<p>Gols: "+quartas_winners[3].goals+"</p>";
 winner_semi2 = winner;
 
 semi_winners = [winner_semi1, winner_semi2];
-
-console.log("VECEDORES DAS SEMIS --> ", semi_winners);
 
 //====================================Semi (final)
 
 //====================================Final (começo)
 play_match([semi_winners[0], semi_winners[1]]);
 rank_two([semi_winners[0], semi_winners[1]])
-console.log("O1xO2  ", semi_winners[0], semi_winners[1],"\nVENCEDOR --> ", winner);
+document.getElementById("final_c1_t1").innerHTML = "<h2>"+semi_winners[0].name+"</h2>"+semi_winners[0].img+"<p>Gols: "+semi_winners[0].goals+"</p>";
+document.getElementById("final_c1_t2").innerHTML = "<h2>"+semi_winners[1].name+"</h2>"+semi_winners[1].img+"<p>Gols: "+semi_winners[1].goals+"</p>";
+img_object(new_list, 300); 
 biggest_winner = winner;
 
-console.log("GRANDE VENCEDOR DA COPA --> ", biggest_winner);
+document.getElementById("winner").innerHTML = "<h3>"+biggest_winner.name+"</h3>"+biggest_winner.img;
+
 //====================================Final (começo)
