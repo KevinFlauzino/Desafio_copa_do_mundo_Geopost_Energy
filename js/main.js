@@ -21,6 +21,7 @@ class Team{
     goals = 0; 
     acc_goals = 0;  
     img;
+    penalty = 0;
 }
 //======================================
 
@@ -166,6 +167,13 @@ function shuffleArray(inputArray){
     inputArray.sort(()=> Math.random() - 0.5);
 }
 
+//função que devolve um inteiro entre 0 e 1
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
 //Ramdomizando nova lista
 shuffleArray(new_list);   
 
@@ -281,13 +289,11 @@ img_object(new_list, 70);
 
 //função que encontra o ganhador entre dois times (gols)
 function rank_two(inputArray){ 
-    
-    compare_goals([inputArray[0], inputArray[1]]);
 
-    inputArray[0].acc_goals = 0;
-    inputArray[1].acc_goals = 0;
-    inputArray[0].points = 0;
-    inputArray[1].points = 0;
+    inputArray[0].penalty = 0;
+    inputArray[1].penalty = 0;
+    
+    compare_goals([inputArray[0], inputArray[1]]);  
 
     //função que compara os gols
     function compare_goals(inputArray){
@@ -298,12 +304,42 @@ function rank_two(inputArray){
             winner = inputArray[1];  
         }
         else{      
-            lucky = [inputArray[0], inputArray[1]];
-            shuffleArray(lucky) ;
+            //Penaltis
+            for(i=0; i<5; i+=1){              
 
-            winner = lucky[0];            
-        }
-    }       
+                aux = getRandomIntInclusive(0, 1); 
+                inputArray[0].penalty += aux;   
+                
+                aux = getRandomIntInclusive(0, 1);
+                inputArray[1].penalty += aux;   
+
+            }            
+            while(inputArray[0].penalty == inputArray[1].penalty ||
+                  inputArray[0].penalty == (inputArray[1].penalty+1)||
+                  (inputArray[0].penalty+1) == inputArray[1].penalty ){
+
+                aux = getRandomIntInclusive(0, 1);    
+                inputArray[0].penalty += aux;   
+                
+                aux = getRandomIntInclusive(0, 1); 
+                inputArray[1].penalty += aux; 
+            } 
+
+            if(inputArray[0].penalty < inputArray[1].penalty){
+                winner = inputArray[1];
+            }
+            else if(inputArray[0].penalty > inputArray[1].penalty){
+                winner = inputArray[0];
+            }  
+        }         
+    }    
+
+    inputArray[0].acc_goals = 0;
+    inputArray[1].acc_goals = 0;
+    inputArray[0].points = 0;
+    inputArray[1].points = 0;
+
+
     return winner;
 }
 
@@ -542,8 +578,7 @@ match_group(group_H);
     
 //Partidas 2
 group_A = ramdom_group(group_A, 2)
-match_group(group_A);    
-    console.log("PROVA --> ", group_A);
+match_group(group_A);  
     document.getElementById("group_A_pair1_match2_t1").innerHTML = "<h2>"+group_A[0].name+"</h2>"+group_A[0].img+"<p>Gols: "+group_A[0].goals+"</p>";
     document.getElementById("group_A_pair1_match2_t2").innerHTML = "<h2>"+group_A[1].name+"</h2>"+group_A[1].img+"<p>Gols: "+group_A[1].goals+"</p>";
     document.getElementById("group_A_pair2_match2_t1").innerHTML = "<h2>"+group_A[2].name+"</h2>"+group_A[2].img+"<p>Gols: "+group_A[2].goals+"</p>";
@@ -698,8 +733,6 @@ teams_oitavas = [winners_A[0], winners_A[1], winners_B[0], winners_B[1],
                  winners_E[0], winners_E[1], winners_F[0], winners_F[1],
                  winners_G[0], winners_G[1], winners_H[0], winners_H[1]]
 
-console.log("Times das oitavas --> ", teams_oitavas);
-
 play_match([winners_A[0], winners_B[1]]);
 rank_two([winners_A[0], winners_B[1]])
 document.getElementById("oitavas_c1_t1").innerHTML = "<h2>"+winners_A[0].name+"</h2>"+winners_A[0].img+"<p>Gols: "+winners_A[0].goals+"</p>";
@@ -750,8 +783,6 @@ winner8 = winner;
 
 oitavas_winners =   [winner1, winner2, winner3, winner4,
                     winner5, winner6, winner7, winner8];
-
-console.log("VECEDORES DAS OITAVAS --> ", oitavas_winners);
 //====================================Oitavas (final)
 
 
@@ -812,4 +843,32 @@ biggest_winner = winner;
 
 document.getElementById("winner").innerHTML = "<h3>"+biggest_winner.name+"</h3>"+biggest_winner.img;
 
-//====================================Final (começo)
+//====================================Final (final)
+json =
+{
+    "equipeA": semi_winners[0].token,
+    "equipeB": semi_winners[1].token,
+    "golsEquipeA": semi_winners[0].goals,
+    "golsEquipeB": semi_winners[1].goals,
+    "golsPenaltyTimeA": semi_winners[0].penalty,
+    "golsPenaltyTimeB": semi_winners[1].penalty
+}
+
+json_final = JSON.stringify(json);
+
+function make_post(url, json_final){
+    let request = new XMLHttpRequest()
+    request.open("POST", url, true)
+    request.setRequestHeader("git-user", "KevinFlauzino");
+    request.send(json_final)
+
+    request.onload = function(){
+        console.log(this.responseText)
+    }
+
+    return request.responseText    
+}
+
+console.log(json_final);
+
+make_post("https://estagio.geopostenergy.com/WorldCup/InsertFinalResult", json_final)
